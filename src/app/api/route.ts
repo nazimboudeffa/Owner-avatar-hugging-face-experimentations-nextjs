@@ -16,7 +16,7 @@ async function handleInference(apiKey: string, model: string, userInput: string,
         
         // Choix de l'API selon le type de requête (chat ou génération de texte)
         if (type === "chat") {
-            const client = await Client.connect(model, { hf_token: apiKey } as any);
+            const client = await Client.connect(model, { hf_token: apiKey as `hf_${string}`});
             result = await client.predict("/chat", { 		
                     message: userInput, 		
                     max_new_tokens: 100, 		
